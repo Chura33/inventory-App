@@ -118,8 +118,7 @@ if (product.user.toString() !== req.user.id){
     // update product
     const updatedProduct = await Product.findByIdAndUpdate(
         {_id:id},
-        {
-            name,
+        {   name,
             category,
             quantity,
             price,
