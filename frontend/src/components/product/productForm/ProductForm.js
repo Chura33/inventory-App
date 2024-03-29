@@ -1,7 +1,7 @@
 import React from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import Card from "../card/Card"
+import Card from "../../card/Card"
 import "./ProductForm.scss";
 const ProductForm = ({
         product, 
@@ -14,7 +14,7 @@ const ProductForm = ({
         saveProduct}) =>{
     return (<div className="add-product">
         <Card cardClass={"card"}>
-        <form onSubmit={saveProduct}>
+        <form onsSubmit={saveProduct}>
           <Card cardClass={"group"}>
             <label>Product Image</label>
             <code className="--color-dark">
@@ -62,7 +62,6 @@ const ProductForm = ({
             </form>
         </Card>
            </div>
-           
            
            )
 }
