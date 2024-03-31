@@ -14,7 +14,7 @@ const ProductForm = ({
         saveProduct}) =>{
     return (<div className="add-product">
         <Card cardClass={"card"}>
-        <form onsSubmit={saveProduct}>
+        <form onSubmit={saveProduct}>
           <Card cardClass={"group"}>
             <label>Product Image</label>
             <code className="--color-dark">

@@ -15,6 +15,9 @@ const ProductSummary = ({products}) => {
         <h3 className="--mt"> Inventory Stats</h3>
         <div className="info-summary">
             <InfoBox icon={productIcon} title={"Total Products"} count={products.length} bgColor="card1"/>
+            <InfoBox icon={earningIcon} title={"Total Store Value"} count={'0'} bgColor="card2"/>
+            <InfoBox icon={outOfStockIcon} title={"Out of Stock"} count={'0'} bgColor="card3"/>
+            <InfoBox icon={categoryIcon} title={"All categories"} count={'0'} bgColor="card4"/>
         </div>
     </div>
 }
