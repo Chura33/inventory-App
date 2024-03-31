@@ -5,6 +5,7 @@ import { selectIsLoggedIn } from '../../redux/features/auth/authSlice';
 import { getProducts } from '../../redux/features/product/productSlice';
 import {useEffect} from "react"; 
 import ProductList from '../../components/product/productList/ProductList';
+import ProductSummary from '../../components/product/productSummary/ProductSummary';
 
 const Dashboard = ({children}) => {
   const path = '/login'; // replace with your actual path
@@ -25,6 +26,7 @@ const Dashboard = ({children}) => {
   return (
     <div>
       <h2>Dashboard</h2>
+      <ProductSummary products={products} />
       <ProductList products={products} isLoading={isLoading}/>
       {children}
     </div>
