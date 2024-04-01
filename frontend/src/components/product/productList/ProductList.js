@@ -6,8 +6,11 @@ import {AiOutlineEye} from "react-icons/ai";
 import Search from "../../search/Search";
 import {useDispatch, useSelector} from "react-redux";
 import { FILTER_PRODUCTS, selectFilteredPoducts } from "../../../redux/features/product/filterSlice";
+import {confirmAlert} from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
 import ReactPaginate  from "react-paginate";
-const ProductList = ({products, isLoading}) => {
+import { deleteProduct, getProducts } from "../../../redux/features/product/productSlice";
+const ProductList = ({products, isLoading}) => { 
     const [search, setSearch] = useState("");
     const filteredProducts = useSelector(selectFilteredPoducts);
     const dispatch = useDispatch();
@@ -18,6 +21,28 @@ const ProductList = ({products, isLoading}) => {
         }
         return text;
     }
+
+    const delProduct = async (id) => {
+        console.log(id);
+        await dispatch(deleteProduct(id));
+        await dispatch(getProducts());
+      };
+const confirmDelete = (id) => {
+    confirmAlert({
+      title: "Delete Product",
+      message: "Are you sure you want to delete this product.",
+      buttons: [
+        {
+          label: "Delete",
+          onClick: () => delProduct(id),
+        },
+        {
+          label: "Cancel",
+          // onClick: () => alert('Click No')
+        },
+      ],
+    });
+  };
 
     // BEGIN PAGINATION
   const [currentItems, setCurrentItems] = useState([]);
@@ -86,7 +111,7 @@ const ProductList = ({products, isLoading}) => {
                                             
                                                     <AiOutlineEye size={25} color={"purple"}/>
                                                     <FaEdit size={20} color={"green"}/>
-                                                    <FaTrashAlt size={20} color={"red"}/>
+                                                    <FaTrashAlt size={20} color={"red"} onClick={()=> confirmDelete(_id)}/>
                                                                             </td>
                                         </tr>
                                     ) 
